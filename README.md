@@ -32,7 +32,7 @@ Die gesamte Installation wird rund 30 Minuten dauern.
 
 ## 1.) Benötigte Software
 
-1. **Node.js 18.19.0 oder neuer**: [https://nodejs.org](https://nodejs.org)
+1. **Node.js 18, 20 oder 22** (jeweils die aktuelle Nebenversionsnummer): [https://nodejs.org](https://nodejs.org)
 2. **Google Chrome:** [https://www.google.com/chrome/](https://www.google.com/chrome/)
 3. **Visual Studio Code:** [https://code.visualstudio.com](https://code.visualstudio.com)
    + Wir empfehlen dir eine Auswahl an Extensions für Visual Studio Code.  
@@ -64,7 +64,7 @@ npm install --location=global @angular/cli
 
 ```
 node -v
-> Erwartet: 18.19.x oder höher
+> Erwartet: 18.19.x oder höher, 20.11.x oder höher, oder 22.x aber nicht 19.x oder 21.x!
 
 ng version
 > Erwartet: 18.x.x (!)
