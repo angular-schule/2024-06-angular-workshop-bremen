@@ -2,8 +2,7 @@
 {{ books | json }}
 </pre> -->
 
-<app-book [book]="books[0]" />
-<app-book [book]="books[1]" />
-<app-book [book]="books[2]" />
-
+@for(b of books; track b) {
+  <app-book [book]="b" />
+}
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
@@ -11,5 +11,8 @@ import { Book } from '../shared/book';
 export class BookComponent {
 
   // klassischer Stil - mit Decorator
-  @Input({ required: true }) book: Book | undefined;
+  // @Input({ required: true }) book: Book | undefined;
+
+  // NEU: Input Signals (Developer Preview)
+  book = input.required<Book>();
 }
