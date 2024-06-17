@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { Book } from '../shared/book';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })
