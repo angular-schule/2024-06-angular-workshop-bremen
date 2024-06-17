@@ -11,5 +11,5 @@ import { Book } from '../shared/book';
 export class BookComponent {
 
   // klassischer Stil - mit Decorator
-  @Input() book: Book | undefined;
+  @Input({ required: true }) book: Book | undefined;
 }
