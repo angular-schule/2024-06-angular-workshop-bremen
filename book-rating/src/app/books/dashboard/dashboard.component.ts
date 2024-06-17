@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  books = ['jQuery', 'AngularJS', 'Angular'];
+
 }
