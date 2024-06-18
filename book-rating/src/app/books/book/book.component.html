@@ -17,14 +17,7 @@
 
     <p>{{ book().description }}</p>
 
-    <!-- Großer Pfusch!
-    1. Wert eines Signals ge-updated, ohne .set() oder .update()
-    2. Keine Validierung
-    3. Logik im Template
-    4. single-responsibility principle (SRP) verletzt
-
-    -->
-    <button class="btn btn-primary me-2" (click)="book().rating = book().rating - 1">-1</button>
-    <button class="btn btn-primary"      (click)="book().rating = book().rating + 1">+1</button>
+    <button class="btn btn-primary me-2" (click)="doRateDown()">-1</button>
+    <button class="btn btn-primary"      (click)="doRateUp()">+1</button>
   </div>
 </div>

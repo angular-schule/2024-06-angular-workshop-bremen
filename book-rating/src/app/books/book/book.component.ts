@@ -1,4 +1,4 @@
-import { Component, input, computed } from '@angular/core';
+import { Component, input, computed, Output, EventEmitter } from '@angular/core';
 import { Book } from '../shared/book';
 import { NgClass } from '@angular/common';
 
@@ -18,4 +18,18 @@ export class BookComponent {
   book = input.required<Book>();
 
   tollesBuch = computed(() => this.book().title === 'Angular')
+
+
+
+  // Klassischer Stil
+  @Output() rateUp = new EventEmitter<Book>();
+  @Output() rateDown = new EventEmitter<Book>();
+
+  doRateUp() {
+    this.rateUp.emit(this.book());
+  }
+
+  doRateDown() {
+    this.rateDown.emit(this.book());
+  }
 }
