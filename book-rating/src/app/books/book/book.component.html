@@ -10,6 +10,11 @@
         <span class="badge bg-secondary">{{ book().rating }}</span>
       </h2>
     </div>
+
+    @if(tollesBuch()) {
+      Tolles Buch!
+    }
+
     <p>{{ book().description }}</p>
 
     <!-- Großer Pfusch!

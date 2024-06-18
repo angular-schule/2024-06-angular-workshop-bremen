@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { Book } from '../shared/book';
 import { NgClass } from '@angular/common';
 
@@ -16,4 +16,6 @@ export class BookComponent {
 
   // NEU: Input Signals (Developer Preview)
   book = input.required<Book>();
+
+  tollesBuch = computed(() => this.book().title === 'Angular')
 }
