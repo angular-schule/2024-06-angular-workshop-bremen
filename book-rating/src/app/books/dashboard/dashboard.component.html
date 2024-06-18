@@ -3,6 +3,9 @@
 </pre> -->
 
 @for(b of books; track b) {
-  <app-book [book]="b" />
+  <app-book
+    (rateUp)="doRateUp($event)"
+    (rateDown)="doRateDown($event)"
+    [book]="b" />
 }
 

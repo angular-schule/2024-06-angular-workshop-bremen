@@ -30,4 +30,11 @@ export class DashboardComponent {
     rating: 5
   }];
 
+  doRateUp(book: Book) {
+    console.log(book);
+  }
+
+  doRateDown(book: Book) {
+    console.table(book);
+  }
 }
