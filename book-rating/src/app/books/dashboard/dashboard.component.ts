@@ -1,15 +1,18 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { Book } from '../shared/book';
-import { JsonPipe, UpperCasePipe } from '@angular/common';
+
+import { BookCreateComponent } from '../book-create/book-create.component';
 import { BookComponent } from '../book/book.component';
+import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [JsonPipe, BookComponent],
+  imports: [JsonPipe, BookComponent, BookCreateComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
@@ -17,6 +20,12 @@ export class DashboardComponent {
 
   // Neuer Stil mit inject() --> siehe Artikel
   bookRatingService = inject(BookRatingService);
+
+  constructor() {
+    // setTimeout(() => this.hallo = 'Welt', 3000);
+  }
+
+  // hallo = 'Angular';
 
   // 🦆
   books = signal<Book[]>([{

@@ -2,6 +2,10 @@
 {{ books | json }}
 </pre> -->
 
+<!-- {{ hallo }} -->
+
+<app-book-create />
+
 @for(b of books(); track b) {
   <app-book
     (rateUp)="doRateUp($event)"
