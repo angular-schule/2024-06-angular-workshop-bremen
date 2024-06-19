@@ -2,7 +2,7 @@
 {{ books | json }}
 </pre> -->
 
-@for(b of books; track b) {
+@for(b of books(); track b) {
   <app-book
     (rateUp)="doRateUp($event)"
     (rateDown)="doRateDown($event)"
