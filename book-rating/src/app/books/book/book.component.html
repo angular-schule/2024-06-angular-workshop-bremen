@@ -9,6 +9,8 @@
         {{ book().title }}
         <span class="badge bg-secondary">{{ book().rating }}</span>
       </h2>
+
+      {{ book().price | currency: 'EUR' }}
     </div>
 
     @if(tollesBuch()) {

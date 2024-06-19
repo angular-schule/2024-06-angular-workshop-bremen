@@ -23,17 +23,20 @@ export class DashboardComponent {
     isbn: '000',
     title: 'jQuery',
     description: 'Altes Buch',
-    rating: 5
+    rating: 5,
+    price: 42.9
   }, {
     isbn: '111',
     title: 'AngularJS',
     description: 'Solides Buch',
-    rating: 3
+    rating: 3,
+    price: 30.9
   }, {
     isbn: '222',
     title: 'Angular',
     description: 'Beste Buch der Welt',
-    rating: 1
+    rating: 1,
+    price: 20.9
   }]);
 
   doRateUp(book: Book) {
