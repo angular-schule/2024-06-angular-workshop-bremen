@@ -24,7 +24,24 @@ export class CreatingComponent {
 
     /******************************/
 
-    
+    // PUSH STATT PULL PRINZIP
+
+    const observer = {
+      next: (e: number) => this.log(e),
+      error: (err: any) => this.log('ERROR ' + err),
+      complete: () => this.log('COMPLETE')
+    };
+
+    // const observable = of('😎', '😻', '🤩');
+    const observable = interval(1000);
+
+    const subscription = observable.subscribe(observer);
+
+    setTimeout(() => subscription.unsubscribe(), 1000 * 5);
+
+    // wenn ihr wollt: Subscriber, Producer, Subject
+
+
     /******************************/
   }
 

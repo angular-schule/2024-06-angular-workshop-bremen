@@ -17,7 +17,8 @@ export const appConfig: ApplicationConfig = {
     // das hier bitte nicht auf Prod einsetzen! (nerds freuen sich)
     provideExperimentalZonelessChangeDetection(),
 
-    provideRouter(routes /*, withDebugTracing() */),
+    provideRouter(routes, withComponentInputBinding()
+      /*, withDebugTracing() */),
 
     { provide: LOCALE_ID, useValue: 'de' },
 
