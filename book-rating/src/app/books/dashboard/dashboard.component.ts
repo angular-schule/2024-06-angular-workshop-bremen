@@ -5,6 +5,7 @@ import { BookCreateComponent } from '../book-create/book-create.component';
 import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,33 +21,19 @@ export class DashboardComponent {
 
   // Neuer Stil mit inject() --> siehe Artikel
   bookRatingService = inject(BookRatingService);
+  bookStoreService = inject(BookStoreService);
+
+  books = signal<Book[]>([]);
 
   constructor() {
-    // setTimeout(() => this.hallo = 'Welt', 3000);
+    // TODO: subscribe ist doof! 😁
+    // TODO: add error handling
+    // TODO: codegen
+    // und sowieso
+    this.bookStoreService.getAllBooks().subscribe(
+      books => this.books.set(books)
+    );
   }
-
-  // hallo = 'Angular';
-
-  // 🦆
-  books = signal<Book[]>([{
-    isbn: '000',
-    title: 'jQuery',
-    description: 'Altes Buch',
-    rating: 5,
-    price: 42.9
-  }, {
-    isbn: '111',
-    title: 'AngularJS',
-    description: 'Solides Buch',
-    rating: 3,
-    price: 30.9
-  }, {
-    isbn: '222',
-    title: 'Angular',
-    description: 'Beste Buch der Welt',
-    rating: 1,
-    price: 20.9
-  }]);
 
   doRateUp(book: Book) {
     const ratedBook = this.bookRatingService.rateUp(book);
