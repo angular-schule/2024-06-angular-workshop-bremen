@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideExperimentalZonelessChangeDetection, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withDebugTracing } from '@angular/router';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     // das hier bitte nicht auf Prod einsetzen! (nerds freuen sich)
     provideExperimentalZonelessChangeDetection(),
 
-    provideRouter(routes),
+    provideRouter(routes /*, withDebugTracing() */),
 
     { provide: LOCALE_ID, useValue: 'de' },
 

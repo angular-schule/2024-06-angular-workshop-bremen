@@ -1,11 +1,12 @@
 import { Component, input, computed, Output, EventEmitter, output, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../shared/book';
 import { CurrencyPipe, NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [NgClass, CurrencyPipe],
+  imports: [NgClass, CurrencyPipe, RouterLink],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
