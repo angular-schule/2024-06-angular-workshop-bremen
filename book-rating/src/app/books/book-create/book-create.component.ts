@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'app-book-create',
@@ -11,8 +12,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class BookCreateComponent {
 
+  create = output<Book>();
+
   bookForm = new FormGroup({
-    isbn: new FormControl('xxx', {
+    isbn: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(3)]
     }),
@@ -45,15 +48,7 @@ export class BookCreateComponent {
       ...this.bookForm.getRawValue(),
       price: 1
     };
-
-    console.log(newBook);
-
-    // Gruppenarbeit
-    // 1. Erzeuge ein Event mit dem Namen create
-    // 2. Versende das neue Buch
-    // 3. Aboniere das Event im Dashbard
-    // 4. Füge das neue Buch dem Buch-Array hinzu
-
+    this.create.emit(newBook);
     this.bookForm.reset();
   }
 

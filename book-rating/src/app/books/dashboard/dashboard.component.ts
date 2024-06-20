@@ -77,4 +77,14 @@ export class DashboardComponent {
     //   .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
     //   .sort((a,b) => b.rating - a.rating));
   }
+
+  addBook(newBook: Book) {
+
+    // mit set
+    const newArray = [...this.books(), newBook].sort((a, b) => b.rating - a.rating);
+    this.books.set(newArray);
+
+    // ODER mit update
+    // this.books.update(x => [...x, newBook].sort((a, b) => b.rating - a.rating));
+  }
 }
