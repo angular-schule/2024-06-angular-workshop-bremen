@@ -44,6 +44,11 @@ export class BookCreateComponent {
 
   submitForm() {
 
+    if (this.bookForm.invalid) {
+      this.bookForm.markAllAsTouched();
+      return;
+    }
+
     const newBook = {
       ...this.bookForm.getRawValue(),
       price: 1
