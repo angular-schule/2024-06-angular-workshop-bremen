@@ -1,11 +1,11 @@
 <div class="float-end">
-  <strong>X =</strong> {{ targetPosition[0] }}<br>
-  <strong>Y =</strong> {{ targetPosition[1] }}<br>
+  <strong>X =</strong> {{ targetPosition().x }}<br>
+  <strong>Y =</strong> {{ targetPosition().y }}<br>
 </div>
 
 <div id="target" #target
-  [style.top.px]="targetPosition[1]"
-  [style.left.px]="targetPosition[0]"></div>
+  [style.top.px]="targetPosition().y"
+  [style.left.px]="targetPosition().x"></div>
 
 <div style="margin-top: 150px">
   <strong>Nutze RxJS, um die rote Box mit Drag-and-drop zu bewegen.</strong>
