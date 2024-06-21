@@ -28,7 +28,11 @@ export class DragdropComponent implements OnInit {
 
     /******************************/
 
-    
+    mouseDown$.pipe(
+      concatMap(() => mouseMove$.pipe(takeUntil(mouseUp$)))
+    ).subscribe(e => this.setTargetPosition(e))
+
+
     /******************************/
   }
 
