@@ -31,8 +31,7 @@ export class HigherorderComponent {
     /**************!!**************/
 
     this.result$ = this.source$.pipe(
-      map(tier => this.es.echo(tier, 5)),
-      mergeAll()
+      switchMap(tier => this.es.echo(tier, 5)),
     );
 
     /**************!!**************/
