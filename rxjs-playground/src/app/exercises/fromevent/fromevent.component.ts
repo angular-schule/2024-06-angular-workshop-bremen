@@ -20,6 +20,7 @@ export class FromeventComponent {
 
     /******************************/
 
+    // TODO: unsubscribe
     fromEvent(window, 'resize').pipe(
 
       debounceTime(1000),
