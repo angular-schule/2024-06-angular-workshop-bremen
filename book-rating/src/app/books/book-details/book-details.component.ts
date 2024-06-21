@@ -2,7 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { catchError, concatMap, map, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, concatMap, delay, map, mergeMap, of, retry, switchMap } from 'rxjs';
 import { BookStoreService } from '../shared/book-store.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -23,6 +23,10 @@ export class BookDetailsComponent {
   book = toSignal(this.router.paramMap.pipe(
     map(paramMap => paramMap.get('isbn') || ''),
     switchMap(isbn => this.bookStore.getSingleBook(isbn).pipe(
+      retry({
+        count: 3,
+        delay: 200
+      }),
       catchError((err: HttpErrorResponse) => of({
         title: 'FEHLER',
         description: err.message
