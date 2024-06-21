@@ -1,6 +1,6 @@
 import { Component, OnDestroy, inject } from '@angular/core';
-import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { Subject, BehaviorSubject, ReplaySubject, Observable, share, takeUntil } from 'rxjs';
+import { AsyncPipe, DecimalPipe, JsonPipe } from '@angular/common';
+import { Subject, BehaviorSubject, ReplaySubject, Observable, share, takeUntil, shareReplay } from 'rxjs';
 
 import { MeasureValuesService } from './measure-values.service';
 import { HistoryComponent } from '../../shared/history/history.component';
@@ -8,7 +8,7 @@ import { HistoryComponent } from '../../shared/history/history.component';
 @Component({
   templateUrl: './multicast.component.html',
   standalone: true,
-  imports: [HistoryComponent, AsyncPipe, DecimalPipe]
+  imports: [HistoryComponent, AsyncPipe, DecimalPipe, JsonPipe]
 })
 export class MulticastComponent implements OnDestroy {
 
@@ -23,7 +23,19 @@ export class MulticastComponent implements OnDestroy {
 
   constructor() {
     /**************!!**************/
-    this.measureValues$ = this.mvs.getValues();
+
+    // cold! 🧊
+    // this.measureValues$ = this.mvs.getValues();
+
+    // hot! 🔥
+    // this.measureValues$ = this.mvs.getValues().pipe(share())
+
+    // hot - mit Cache! 🔥
+    this.measureValues$ = this.mvs.getValues().pipe(shareReplay({
+      refCount: true,
+      bufferSize: 1
+    }));
+
     /**************!!**************/
 
   }
